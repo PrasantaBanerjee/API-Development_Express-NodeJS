@@ -2,7 +2,7 @@
   "name": "apidesign",
   "version": "1.0.0",
   "description": "This is a demo project for API Design. ",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0"
   }
 }
