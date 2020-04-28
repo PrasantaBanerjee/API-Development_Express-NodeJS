@@ -12,7 +12,7 @@ Clone the repository
 ```
 git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git
 ```
-Then install the packages mentioned below & run server.js
+Then install the packages mentioned below & run *server.js*
 ```
 npm install express
 npm install express-basic-auth
