@@ -11,17 +11,17 @@ Open Terminal or command line, cd to the desired folder where the test automatio
 
 Clone the repository
 
-git clone https://github.com/gauravkarvir/cucumber_testng_java.git
+`git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git`
 
 Then install the packages mentioned below & run server.js
 
-npm install express
-npm install express-basic-auth
-npm install body-parser
+`npm install express
+ npm install express-basic-auth
+ npm install body-parser`
 
 Tools & Libraries:
 ====================
-  1. NodeJS : JavaScript runtime environment � lets you implement your application back-end in JavaScript.
+  1. NodeJS : JavaScript runtime environment, lets you implement your application back-end in JavaScript.
   2. ExpressJS : a feature-rich javascript based framework running on top of Node.js.
   3. VScode : Integrated Development Environment.
   4. JavaScript: Programming Language.
