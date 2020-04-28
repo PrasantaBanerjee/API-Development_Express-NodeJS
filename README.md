@@ -16,7 +16,9 @@ Clone the repository
 Then install the packages mentioned below & run server.js
 
 `npm install express
+
  npm install express-basic-auth
+ 
  npm install body-parser`
 
 Tools & Libraries:
