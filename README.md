@@ -9,12 +9,14 @@ I assume you have NodeJS & Git installed in your system.
 Open Terminal or command line, cd to the desired folder where the test automation source code needs to be checkout.
 
 Clone the repository
-`git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git`
+```git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git```
 
 Then install the packages mentioned below & run server.js
-`npm install express`
-`npm install express-basic-auth`
-`npm install body-parser`
+```
+npm install express
+npm install express-basic-auth
+npm install body-parser
+```
 
 Tools & Libraries:
 ====================
