@@ -9,8 +9,8 @@ const basicAuth = require('express-basic-auth')
 //Here we are configuring the credentials to be used for Basic Authentication.
 app.use(basicAuth({
     users: { 
-        'Prasanta': 'Banerjee',
-        'admin': 'p@ssword123'
+        'SuperUser1': 'P@ssword1',
+        'SuperUser2': 'P@ssword2'
     },
     challenge: true,                                //browser-popup requesting for username & password.
     unauthorizedResponse: getUnauthorizedResponse   //function called if authentication failed.
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false })); //support encoded bodies.
 app.use(bodyParser.json());                          //support json encoded bodies.
 
 //----------- Get the JSON Data ------------//
-let employeesData = require('./employeesData');
+let allUsersData = require('./userData');
 
 //Create the API endpoints/routers with callback functions.
 //---- Display a welcome message ----//
@@ -38,13 +38,13 @@ app.get('/api/', function (req, res) {
 
 //GET Method: Retrieve all user's data.
 app.get('/api/employees', function (req, res) {
-    res.json(employeesData);
+    res.json(allUsersData);
 });
 
 //GET Method: Retrieve user's data based on 'ID' param.
 app.get('/api/employees/:id', function (req, res) {
     const id = req.params.id;
-    const user = employeesData.find(user => user.id == id);
+    const user = allUsersData.find(user => user.id == id);
     if (user) {
         res.statusCode = 200
         res.json(user)
@@ -57,22 +57,22 @@ app.get('/api/employees/:id', function (req, res) {
 
 //POST Method: Create a new employee.
 app.post('/api/employees', function (req, res) {
-    employeesData.push(req.body);
+    allUsersData.push(req.body);
     res.status(201).json(req.body);
 });
 
 //PUT Method: Update an employee based on 'ID' param.
 app.put('/api/employees/:id', function (req, res) {
     const id = req.params.id;
-    const user = employeesData.find(user => user.id == id)
+    const user = allUsersData.find(user => user.id == id)
     if (user) {
-        const index = employeesData.indexOf(user);
+        const index = allUsersData.indexOf(user);
         let keys = Object.keys(req.body);
         keys.forEach(key => {
             user[key] = req.body[key];
         });
-        employeesData[index] = user;
-        res.json(employeesData[index]);
+        allUsersData[index] = user;
+        res.json(allUsersData[index]);
     }
     else {
         res.statusCode = 404
@@ -83,7 +83,7 @@ app.put('/api/employees/:id', function (req, res) {
 //DELETE: Delete an employee based on 'ID' param.
 app.delete('/api/employees/:id', function (req, res) {
     let id = req.params.id;
-    const user = employeesData.find(user => user.id == id)
+    const user = allUsersData.find(user => user.id == id)
     /*
     //get headers.
     console.log(req.headers)
@@ -93,8 +93,8 @@ app.delete('/api/employees/:id', function (req, res) {
     console.log(req.headers)
     */
     if (user) {
-        const index = employeesData.indexOf(user);
-        employeesData.splice(index, 1);
+        const index = allUsersData.indexOf(user);
+        allUsersData.splice(index, 1);
         res.json({ message: `User ${id} deleted.`} );
     }
     else {
