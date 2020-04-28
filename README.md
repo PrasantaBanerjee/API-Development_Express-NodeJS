@@ -2,6 +2,7 @@
 
 Users can create custom APIs with fake data and test the APIs easily with different HTTP Verbs (GET/POST/PUT/DELETE). 
 The data is retrieved from a local static file and new data POSTed to the server is saved in-memory. 
+Basic authentication has been used to authenticate the user.
 
 Setup:
 ========

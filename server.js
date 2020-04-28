@@ -27,81 +27,24 @@ function getUnauthorizedResponse(req) {
 app.use(bodyParser.urlencoded({ extended: false })); //support encoded bodies.
 app.use(bodyParser.json());                          //support json encoded bodies.
 
-//----------- Get the JSON Data ------------//
-let allUsersData = require('./userData');
+//------------ Get the JSON Data -------------//
+let allUsersData = require('./data/userData.js');
 
-//Create the API endpoints/routers with callback functions.
-//---- Display a welcome message ----//
-app.get('/api/', function (req, res) {
-    res.send('Welcome to Employees API !!! Get access to free APIs. These APIs have been developed using Node & Express.');
-});
+//---------- Router for GET Requests ----------//
+var getRequest = require('./routers/get_request.js');
+app.use('', getRequest);
 
-//GET Method: Retrieve all user's data.
-app.get('/api/employees', function (req, res) {
-    res.json(allUsersData);
-});
+//---------- Router for POST Requests ----------//
+var postRequest = require('./routers/post_request.js');
+app.use('', postRequest);
 
-//GET Method: Retrieve user's data based on 'ID' param.
-app.get('/api/employees/:id', function (req, res) {
-    const id = req.params.id;
-    const user = allUsersData.find(user => user.id == id);
-    if (user) {
-        res.statusCode = 200
-        res.json(user)
-    }
-    else {
-        res.statusCode = 404
-        return res.json({ Error: ['ID Not Found'] });
-    }
-});
+//---------- Router for PUT Requests ----------//
+var putRequest = require('./routers/put_request.js');
+app.use('', putRequest);
 
-//POST Method: Create a new employee.
-app.post('/api/employees', function (req, res) {
-    allUsersData.push(req.body);
-    res.status(201).json(req.body);
-});
-
-//PUT Method: Update an employee based on 'ID' param.
-app.put('/api/employees/:id', function (req, res) {
-    const id = req.params.id;
-    const user = allUsersData.find(user => user.id == id)
-    if (user) {
-        const index = allUsersData.indexOf(user);
-        let keys = Object.keys(req.body);
-        keys.forEach(key => {
-            user[key] = req.body[key];
-        });
-        allUsersData[index] = user;
-        res.json(allUsersData[index]);
-    }
-    else {
-        res.statusCode = 404
-        return res.json({ Error: ['ID Not Found'] });
-    }
-});
-
-//DELETE: Delete an employee based on 'ID' param.
-app.delete('/api/employees/:id', function (req, res) {
-    let id = req.params.id;
-    const user = allUsersData.find(user => user.id == id)
-    /*
-    //get headers.
-    console.log(req.headers)
-    //set headers.
-    res.set('Content-Type', 'text/html')
-    //validate the new value set.
-    console.log(req.headers)
-    */
-    if (user) {
-        const index = allUsersData.indexOf(user);
-        allUsersData.splice(index, 1);
-        res.json({ message: `User ${id} deleted.`} );
-    }
-    else {
-        res.statusCode = 404
-        return res.json({ Error: ['ID Not Found'] });
-    }
-});
+//---------- Router for DELETE Requests ----------//
+var delRequest = require('./routers/delete_request.js');
+app.use('', delRequest);
 
 //Start the Node server.
 const hostname = 'localhost';
