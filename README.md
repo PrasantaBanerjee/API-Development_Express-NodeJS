@@ -6,13 +6,13 @@ The data is retrieved from a local static file and new data POSTed to the server
 Setup:
 ========
 I assume you have NodeJS & Git installed in your system.
-Open Terminal or command line, cd to the desired folder where the test automation source code needs to be checkout.
+Open Terminal, cd to the desired folder where the test automation source code needs to be checkout.
 
 Clone the repository
 ```
 git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git
 ```
-Then install the packages mentioned below & run *server.js*
+Then install the packages mentioned below & run **server.js**
 ```
 npm install express
 npm install express-basic-auth
