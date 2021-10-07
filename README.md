@@ -13,11 +13,20 @@ Clone the repository
 ```
 git clone https://github.com/PrasantaBanerjee/API-Development_Express-NodeJS.git
 ```
-Then install the packages mentioned below & run **server.js**
+Open VSCode, launch a terminal & then install the packages mentioned below:
 ```
 npm install express
+```
+```
 npm install express-basic-auth
+```
+```
 npm install body-parser
+```
+
+Once done, run the command:
+```
+node server.js
 ```
 
 Tools & Libraries:
